@@ -1,0 +1,247 @@
+/* 🌙 Dark Theme Base Styles */
+:root {
+    --bg-dark: #121212;
+    --bg-light: #1e1e1e;
+    --text-light: #ffffff;
+    --text-muted: #b0b0b0;
+    --primary-color:  #F1F1F2;
+    --secondary-color: #A1D6E2;
+    --error-color : red;
+    --border-color: #333;
+    --hover-color: #A1D6E2;
+}
+
+/* 🌐 Global Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    line-height: 1.6;
+}
+
+a {
+    color: var(--text-muted);
+    text-decoration: none;
+    margin: 0 10px;
+    transition: color 0.3s;
+}
+
+a:hover {
+    color: var(--primary-color);
+}
+
+/* 🔝 Navigation Bar */
+.navbar {
+    background: var(--bg-light);
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid var(--border-color);
+}
+
+.navbar h1 {
+    color: var(--text-light);
+    font-size: 1.8rem;
+}
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+}
+
+.navbar ul li {
+    display: inline;
+}
+
+.navbar ul li a {
+    text-decoration: none;
+    color: var(--text-muted);
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    transition: color 0.3s;
+}
+
+.navbar ul li a:hover {
+    color: var(--primary-color);
+}
+
+/* 📌 Card Component */
+/* Card Transition Animation */
+.card {
+    background: var(--bg-light);
+    padding: 2rem;
+    margin: 5rem auto;
+    max-width: 400px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.1);
+    border: 1px solid var(--border-color);
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeIn 0.5s ease forwards;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.card h2 {
+    color: var(--text-light);
+    margin-bottom: 1rem;
+}
+
+.card p {
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+}
+
+.card .upload-btn {
+    display: block;
+    width: 100%;
+    background: var(--secondary-color);
+    border: none;
+    color: var(--bg-dark);
+    padding: 10px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background 0.3s;
+    text-decoration: none;
+}
+
+.card .upload-btn:hover {
+    background: var(--primary-color);
+}
+.card .a {
+    color: var(--text-muted);
+    text-decoration: none;
+    margin: 0 10px;
+    transition: color 0.3s;
+}
+.card .a:hover {
+    color: var(--primary-color);
+}
+
+/* 🔘 Buttons */
+.btn {
+    display: inline-block;
+    padding: 12px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    transition: background 0.3s, transform 0.2s;
+    text-decoration: none;
+}
+
+.btn-primary {
+    background: var(--primary-color);
+    color: var(--bg-dark);
+}
+
+.btn-primary:hover {
+    background: var(--hover-color);
+}
+
+.btn-secondary {
+    background: var(--secondary-color);
+    color: var(--bg-dark);
+    margin-left: 10px;
+}
+
+.btn-secondary:hover {
+    background: var(--primary-color);
+}
+
+.btn:active {
+    transform: scale(0.95);
+}
+
+/* 📏 Separator Line */
+.separator {
+    height: 2px;
+    background: var(--border-color);
+    margin: 2rem 0;
+}
+
+/* 📌 Footer */
+.footer {
+    background: var(--bg-light);
+    padding: 1rem;
+    text-align: center;
+    border-top: 2px solid var(--border-color);
+    margin: 5rem auto;
+}
+
+.footer h2 {
+    color: var(--text-light);
+    text-align: left;
+}
+.footer p {
+    color: var(--text-light);
+    text-align: left;
+}
+.footer ul li {
+    display: inline;
+    margin : 5px 5px;
+}
+
+.footer ul li a {
+    text-decoration: none;
+    color: var(--text-muted);
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    transition: color 0.3s;
+}
+
+.footer ul li a:hover {
+    color: var(--primary-color);
+}
+
+/* Error Message */
+.error {
+    color: var(--error-color);
+    font-size: 1rem;
+    margin-top: 10px;
+}
+
+/* Upload Input Styling */
+input[type="file"] {
+    display: block;
+    margin: 10px auto;
+    padding: 10px;
+    background: var(--bg-light);
+    border: 1px solid var(--border-color);
+    color: var(--text-light);
+    cursor: pointer;
+}
+
+/* Preview Image Styling */
+.preview-image {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    display: block;
+    margin: 20px auto;
+    border-radius: 10px;
+    border: 2px solid var(--border-color);
+    transition: border-color 0.3s;
+}
+
+.preview-image.preview-active {
+    border-color: var(--secondary-color);
+}

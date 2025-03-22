@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title> About | Cut Out ✂️</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Cut Out | Image segmentation</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    </head>
+    <body>
+        {% include 'navbar.html' %}
+        <div class="card">
+            <h1>About</h1>
+            <p>This project is developed by <a href="https://x.com/__Jaisurya"">Jaisurya Prabakaran</a> using the flask in python. The inspiration of this project is from the demo of <a href="https://segment-anything.com">Segment Anything Model</a> by Meta. The model used in this project is <a href="https://github.com/facebookresearch/sam2/tree/main">SAM 2 Tiny</a> version</p>
+        </div>
+        {% include 'footer.html' %}
+    </body>
+</html>

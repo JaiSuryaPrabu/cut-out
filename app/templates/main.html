@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <!-- Upload card -->
+    {% if not uploaded_file %}
+    <div class="card">
+        <h2>Upload Your File</h2>
+        <p>Click the button below to select and upload your file. Ensure png, jpg, jpeg files are selected</p>
+        <form action="/" method="POST" enctype="multipart/form-data">
+            <input type="file" name="file" id="file-input" accept=".jpg, .jpeg, .png">
+            <button type="submit" class="upload-btn">Upload Photo</button>
+        </form>
+        {% if error %}
+            <p class="error">{{ error }}</p>
+        {% endif %}
+    </div>
+    {% endif %}
+
+    <!-- Selection card -->
+    {% if uploaded_file and not result_file %}
+    <div class="card">
+        <h2>Select the Object</h2>
+        <p>Click on the region of interest to make a cutout</p>
+        <img src="{{ url_for('static', filename='uploads/' + (preview_file if preview_file else uploaded_file)) }}" alt="Uploaded Image" class="preview-image{% if preview_file %} preview-active{% endif %}" id="preview-image">
+        <form id="preview-form" action="/preview" method="POST" style="display: none;">
+            <input type="hidden" name="x" id="preview-x-coord">
+            <input type="hidden" name="y" id="preview-y-coord">
+            <input type="hidden" name="filename" value="{{ uploaded_file }}">
+        </form>
+        <form id="segment-form" action="/segment" method="POST">
+            <!-- Pre-fill x and y coordinates if available -->
+            <input type="hidden" name="x" id="x-coord" value="{{ x_coord if x_coord is not none else '' }}">
+            <input type="hidden" name="y" id="y-coord" value="{{ y_coord if y_coord is not none else '' }}">
+            <input type="hidden" name="filename" value="{{ uploaded_file }}">
+            <button type="submit" class="btn btn-primary" id="submit-btn" {% if not preview_file %}disabled{% endif %}>Submit</button>
+        </form>
+        <a href="{{ url_for('reset') }}" class="btn btn-secondary" style="margin-top: 10px;">Back</a>
+        {% if error %}
+            <p class="error">{{ error }}</p>
+        {% endif %}
+    </div>
+    {% endif %}
+
+    <!-- Result card -->
+    {% if result_file %}
+    <div class="card">
+        <h2>Result Image</h2>
+        <p>The selected region has been removed from the original image.</p>
+        <img src="{{ url_for('static', filename='uploads/' + result_file) }}" alt="Result Image" class="preview-image">
+        <a href="{{ url_for('download_file', filename=result_file) }}" class="btn btn-primary" style="margin-top: 10px;">Download Result</a>
+        <a href="{{ url_for('reset') }}" class="btn btn-secondary" style="margin-top: 10px;">Back</a>
+    </div>
+    {% endif %}
+
+    <script>
+        document.getElementById('preview-image')?.addEventListener('click', function(e) {
+            // Get the image element
+            const img = e.target;
+            const rect = img.getBoundingClientRect();
+
+            // Calculate the x, y coordinates relative to the image
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+
+            // Update hidden inputs with coordinates
+            document.getElementById('preview-x-coord').value = x;
+            document.getElementById('preview-y-coord').value = y;
+            document.getElementById('x-coord').value = x;
+            document.getElementById('y-coord').value = y;
+
+            document.getElementById('submit-btn').disabled = false;
+            document.getElementById('preview-form').submit();
+        });
+    </script>
+{% endblock %}

@@ -1,0 +1,7 @@
+flask
+numpy
+pillow
+python-dotenv
+ultralytics
+werkzeug
+gevent
