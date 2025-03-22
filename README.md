@@ -1,9 +1,13 @@
 # Cut Out
-![Python](https://img.shields.io/badge/python-3.8+-blue.svg)
+![Python](https://img.shields.io/badge/python-3.12+-blue.svg)
+
 Cut out is a image segmentation implementation project that allows users to upload an image, select a region of interest and generate a cutout image with the selected region. In this project, I used Meta's [Segment Anything Model](https://github.com/facebookresearch/sam2/tree/main) which is state of the art deep learning model in the image segmentation task. To try the demo visit [here](). To try the Meta's demo try [here](https://segment-anything.com/demo). 
 
 ## Demo
-To see the demo [video](https://github.com/JaiSuryaPrabu/cut-out/Image_segmentation_demo.mp4)
+
+https://github.com/user-attachments/assets/98ee0372-a640-419a-8580-1ebf100566ad
+
+
 ## Tech Stack
 1. Python
 2. Flask 
@@ -30,12 +34,12 @@ $ .venv/Scripts/activate.ps1 <or> source .venv/Scripts/activate
 ### Export the FLASK_APP
 Enter this command 
 ```bash
-export FLASK_APP=main.py
+$ export FLASK_APP=main.py
 ```
 
 ### Run the app
 ```bash
-python -m gevent.pywsgi -b 0.0.0.0:7860 main:app
+$ python -m gevent.pywsgi -b 0.0.0.0:7860 main:app
 ```
 ## Contribution
 Contributions are warmly welcomed 🤗 To contribute :
