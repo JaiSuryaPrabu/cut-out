@@ -3,7 +3,7 @@
 Cut out is a image segmentation implementation project that allows users to upload an image, select a region of interest and generate a cutout image with the selected region. In this project, I used Meta's [Segment Anything Model](https://github.com/facebookresearch/sam2/tree/main) which is state of the art deep learning model in the image segmentation task. To try the demo visit [here](). To try the Meta's demo try [here](https://segment-anything.com/demo). 
 
 ## Demo
-
+To see the demo [video](https://github.com/JaiSuryaPrabu/cut-out/Image_segmentation_demo.mp4)
 ## Tech Stack
 1. Python
 2. Flask 
